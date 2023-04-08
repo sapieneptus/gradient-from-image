@@ -6,7 +6,12 @@ const grFunc = require("./grFunc.js");
 
 module.exports ={
 	gr:(imgUrl)=>{
-		return Vibrant.from(imgUrl).getPalette()
+		const img = new Image();
+    		img.crossOrigin = 'Anonymous';
+    		img.src = imgUrl;
+    		const vibrant = new Vibrant(img);
+		
+		return vibrant.getPalette()
 		  .then((palette) => {
 		  	// ading for this value
 		  	grFunc.init(palette);
@@ -24,7 +29,12 @@ module.exports ={
 		  })
 	},
 	solid:(imgUrl)=>{
-		return Vibrant.from(imgUrl).getPalette()
+		const img = new Image();
+    		img.crossOrigin = 'Anonymous';
+    		img.src = imgUrl;
+    		const vibrant = new Vibrant(img);
+		
+		return vibrant.getPalette()
 		  .then((palette) => {
 
 		  	for(p in palette){
